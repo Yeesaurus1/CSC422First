@@ -5,31 +5,38 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public static void main(String args[]) {
-  //Must make my own Pet menu thing (like I've done before)
+public class FrahmCSC422Ses1 {
 
-  System.out.println("Pet Database Program.");
-  System.out.println();
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        //Must make my own Pet menu thing (like I've done before)
 
-  System.out.println("What would you like to do?");
+        System.out.println("Pet Database Program.");
+        System.out.println();
 
+        System.out.println("What would you like to do?");
+    }
+    
+    
+    //might move to other file later
+    public static void ListHeader() {
+        System.out.printf("+----------------------+");
+        System.out.printf("| ID | NAME      | AGE |");
+        System.out.printf("+----------------------+");
+    }
 
-}
+    public static void List(int id) {
+        System.out.printf("");
+        //add list of pets with ID, name, and age
+    }
 
-
-//might move to other file later
-public static void ListHeader() {
-  System.out.printf("+----------------------+");
-  System.out.printf("| ID | NAME      | AGE |");
-  System.out.printf("+----------------------+");
-}
-
-public static void List(int id) {
-  System.out.printf("");
-  //add list of pets with ID, name, and age
-}
-
-public static void ListFooter(int rows) {
-  System.out.printf("+----------------------+");
-  System.out.printf(rows + " rows in set.");
+    public static void ListFooter(int rows) {
+        System.out.printf("+----------------------+");
+        System.out.printf(rows + " rows in set.");
+    }
+    
+    
+    
 }
