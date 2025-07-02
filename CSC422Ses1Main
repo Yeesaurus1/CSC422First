@@ -15,6 +15,7 @@ public class FrahmCSC422Ses1 {
         //Must make my own Pet menu thing (like I've done before)
         
         Scanner scan = new Scanner(System.in);
+        int decision;
         
         
 
@@ -23,29 +24,35 @@ public class FrahmCSC422Ses1 {
         
         
         do {
-            int choice;
+            decision = getUserChoice();
             
             String petName;
             int age;
             
-            switch(choice) {
+            switch(decision) {
                 case 1:
                     //view pets class here
+                    viewPets();
             
                 case 2:
                     //add pets
+                    addPets();
             
                 case 3:
                     //update pet
+                    updatePet();
             
                 case 4:
                     //delete pet
+                    removePet();
             
                 case 5:
                     //search pet name
+                    searchPetByName();
             
                 case 6:
                     //search pet age
+                    searchPetByAge();
             
                 case 7:
                     //exit program
