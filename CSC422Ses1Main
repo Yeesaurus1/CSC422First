@@ -165,6 +165,32 @@ public class FrahmCSC422Ses1 {
         System.out.printf("+----------------------+");
         System.out.printf(rows + " rows in set.");
     }
+
+    class Pet {
+        private String petName;
+        private int petAge;
+        
+        public Pet(String name, int age) {
+            name = petName;
+            age = petAge;
+        }
+        
+        public String getName() {
+            return petName;
+        }
+        
+        public int getAge() {
+            return petAge;
+        }
+        
+        public void setName(String n) {
+            petName = n;
+        }
+        
+        public void setAge(int a) {
+            petAge = a;
+        }
+    }
     
     
     
