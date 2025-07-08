@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class FrahmCSC422Ses1 {
 
-    public static ArrayList<String> pets = new ArrayList<>();
+    public static ArrayList<Pet> pets = new ArrayList<>();
     public static int petCount = 100;
     
     
@@ -17,10 +17,7 @@ public class FrahmCSC422Ses1 {
         Scanner scan = new Scanner(System.in);
         int decision;
         
-        
-
         System.out.println("Pet Database Program.");
-        System.out.println();
         
         
         do {
@@ -205,45 +202,19 @@ public class FrahmCSC422Ses1 {
     
     //might move to other file later
     public static void ListHeader() {
-        System.out.printf("+----------------------+");
-        System.out.printf("| ID | NAME      | AGE |");
-        System.out.printf("+----------------------+");
+        System.out.println("+----------------------+");
+        System.out.println("| ID | NAME      | AGE |");
+        System.out.println("+----------------------+");
     }
 
     public static void List(int id) {
-        System.out.printf("| " + id + " | " + name + "     | " + age + " |");
+        System.out.println("| " + id + " | " + name + "     | " + age + " |");
         //add list of pets with ID, name, and age
     }
 
     public static void ListFooter(int rows) {
-        System.out.printf("+----------------------+");
-        System.out.printf(rows + " rows in set.");
+        System.out.println("+----------------------+");
+        System.out.println(rows + " rows in set.");
     }
 
-}
-
-class Pet { //Pet class for defining values
-    private String petName;
-    private int petAge;
-        
-    public Pet(String name, int age) {
-        name = petName;
-        age = petAge;
-    }
-        
-    public String getName() {
-        return petName;
-    }
-        
-    public int getAge() {
-        return petAge;
-    }
-        
-    public void setName(String n) {
-        petName = n;
-    }
-        
-    public void setAge(int a) {
-        petAge = a;
-    }
 }
