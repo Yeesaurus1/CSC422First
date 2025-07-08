@@ -1,0 +1,26 @@
+public class Pet {
+    private String petName;
+    private int petAge;
+    
+    public Pet(String name, int age) {
+        super();
+        name = petName;
+        age = petAge;
+    }
+    
+    public String getName() {
+        return petName;
+    }
+    
+    public int getAge() {
+        return petAge;
+    }
+    
+    public void setName(String n) {
+        petName = n;
+    }
+    
+    public void setAge(int a) {
+        petAge = a;
+    }
+}
