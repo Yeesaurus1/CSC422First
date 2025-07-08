@@ -44,7 +44,7 @@ public class FrahmCSC422Ses1 {
             
                 case 4:
                     //delete pet
-                    removePet();
+                    updatePet();
             
                 case 5:
                     //search pet name
@@ -57,7 +57,6 @@ public class FrahmCSC422Ses1 {
                 case 7:
                     //exit program
                     System.out.println("Goodbye!");
-                    scan.close();
                     break;
             
                 default:
@@ -65,7 +64,8 @@ public class FrahmCSC422Ses1 {
                 
             }
                 
-        }
+        } while (decision != 7);
+        scan.close();
         
     }
 
@@ -93,10 +93,9 @@ public class FrahmCSC422Ses1 {
     public static void viewPets() {
         TableHeader();
         
-        for (int i = 0; i < petCount; i++) {
-            
+        for (int i = 0; i < pets.size(); i++) {
+            Table(i, pets.get(i).getName(), pets.get(i).getAge());
         }
-        
         
     }
     
@@ -114,7 +113,7 @@ public class FrahmCSC422Ses1 {
             }
             
             age = scan.nextInt();
-            petInfo.add(new Pet(name, age));
+            pets.add(new Pet(name, age));
             petCount++;
         }
         System.out.println(petCount + " pets added.");
@@ -122,31 +121,86 @@ public class FrahmCSC422Ses1 {
     }
     
     public static void updatePet() {
+        String name;
+        int age;
+        
         Scanner scan = new Scanner(System.in);
         
         System.out.print("Enter the pet ID you can to update: ");
         int id = scan.nextInt();
         
+        if (id < 0 || id >= pets.size()) {
+            System.out.println("Invalid ID.");
+        }
+        
         System.out.print("Enter new name and new age: ");
+        name = scan.nextLine();
+        age = scan.nextInt();
         
-        System.out.print("");
+        Pet pet = pets.get(id);
         
-    }
-    
-    public static void removePet() {
+        pet.setName(name);
+        pet.setAge(age);
         
+        
+        System.out.print("This pet is now " + name + " " + age);
         
     }
     
     public static void searchPetByName() {
+        String name;
+        boolean found;
+        
+        Scanner s = new Scanner(System.in);
+        
+        System.out.print("Please enter a name to search: ");
+        name = s.nextLine();
+        found = false;
+        
+        TableHeader();
+        
+        for (int i = 0; i < pets.size(); i++) {
+            if (pets.get(i).getName().equalsIgnoreCase(name)) {
+                printTableRow(i, pets.get(i).getName(), pets.get(i).getAge());
+                found = true;
+            }
+        }
+        
+        if (!found) {
+            System.out.println("No pets with that name found.");
+        }
+        
+        TableFooter(pets.size());
         
         
     }
     
     public static void searchPetByAge() {
+        int age;
+        boolean found;
         
+        Scanner scan = new Scanner(System.in);
+        
+        System.out.print("Please enter an age to search: ");
+        age = scan.nextInt();
+        found = false;
+        
+        TableHeader();
+        
+        for (int i = 0; i < pets.size(); i++) {
+            if (pets.get(i).getAge() == age) {
+                Table(i, pets.get(i).getName(), pets.get(i).getAge());
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No pets found with that age.");
+        }
+        
+        TableFooter(pets.size());
         
     }
+
     
     
     //might move to other file later
@@ -157,7 +211,7 @@ public class FrahmCSC422Ses1 {
     }
 
     public static void List(int id) {
-        System.out.printf("");
+        System.out.printf("| " + id + " | " + name + "     | " + age + " |");
         //add list of pets with ID, name, and age
     }
 
@@ -166,32 +220,30 @@ public class FrahmCSC422Ses1 {
         System.out.printf(rows + " rows in set.");
     }
 
-    class Pet {
-        private String petName;
-        private int petAge;
+}
+
+class Pet { //Pet class for defining values
+    private String petName;
+    private int petAge;
         
-        public Pet(String name, int age) {
-            name = petName;
-            age = petAge;
-        }
-        
-        public String getName() {
-            return petName;
-        }
-        
-        public int getAge() {
-            return petAge;
-        }
-        
-        public void setName(String n) {
-            petName = n;
-        }
-        
-        public void setAge(int a) {
-            petAge = a;
-        }
+    public Pet(String name, int age) {
+        name = petName;
+        age = petAge;
     }
-    
-    
-    
+        
+    public String getName() {
+        return petName;
+    }
+        
+    public int getAge() {
+        return petAge;
+    }
+        
+    public void setName(String n) {
+        petName = n;
+    }
+        
+    public void setAge(int a) {
+        petAge = a;
+    }
 }
