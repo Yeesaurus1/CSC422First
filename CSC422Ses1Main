@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class FrahmCSC422Ses1 {
 
     public static ArrayList<Pet> pets = new ArrayList<>();
-    public static int petCount = 100;
+    public static int petCount = 5;
     
     
     public static void main(String[] args) {
@@ -37,21 +37,9 @@ public class FrahmCSC422Ses1 {
             
                 case 3:
                     //update pet
-                    updatePet();
+                    removePet();
             
                 case 4:
-                    //delete pet
-                    updatePet();
-            
-                case 5:
-                    //search pet name
-                    searchPetByName();
-            
-                case 6:
-                    //search pet age
-                    searchPetByAge();
-            
-                case 7:
                     //exit program
                     System.out.println("Goodbye!");
                     break;
@@ -71,11 +59,8 @@ public class FrahmCSC422Ses1 {
         
         System.out.println("1) View all pets");
         System.out.println("2) Add more pets");
-        System.out.println("3) Update an existing pet");
-        System.out.println("4) Remove an existing pet");
-        System.out.println("5) Search pets by name");
-        System.out.println("6) Search pets by age");
-        System.out.println("7) Exit program");
+        System.out.println("3) Remove a pet");
+        System.out.println("4) Exit program");
         
         System.out.println();
         System.out.print("Your choice: ");
@@ -110,95 +95,39 @@ public class FrahmCSC422Ses1 {
             }
             
             age = scan.nextInt();
-            pets.add(new Pet(name, age));
+
+            if (age > 0 && age < 21) {
+                pets.add(new Pet(name, age));
+            }
+            else {
+                System.out.println("Error: " + age + " is not a valid age.");
+                continue;
+            }
             petCount++;
         }
         System.out.println(petCount + " pets added.");
         
     }
     
-    public static void updatePet() {
+    public static void removePet() {
         String name;
         int age;
         
         Scanner scan = new Scanner(System.in);
         
-        System.out.print("Enter the pet ID you can to update: ");
+        System.out.print("Enter the pet ID to remove: ");
         int id = scan.nextInt();
         
         if (id < 0 || id >= pets.size()) {
-            System.out.println("Invalid ID.");
+            System.out.println("Error: + ID " + " does not exist.");
+        }
+        else {
+            
         }
         
-        System.out.print("Enter new name and new age: ");
-        name = scan.nextLine();
-        age = scan.nextInt();
-        
-        Pet pet = pets.get(id);
-        
-        pet.setName(name);
-        pet.setAge(age);
-        
-        
-        System.out.print("This pet is now " + name + " " + age);
+        System.out.println(name + " " + age + " is removed.");
         
     }
-    
-    public static void searchPetByName() {
-        String name;
-        boolean found;
-        
-        Scanner s = new Scanner(System.in);
-        
-        System.out.print("Please enter a name to search: ");
-        name = s.nextLine();
-        found = false;
-        
-        TableHeader();
-        
-        for (int i = 0; i < pets.size(); i++) {
-            if (pets.get(i).getName().equalsIgnoreCase(name)) {
-                printTableRow(i, pets.get(i).getName(), pets.get(i).getAge());
-                found = true;
-            }
-        }
-        
-        if (!found) {
-            System.out.println("No pets with that name found.");
-        }
-        
-        TableFooter(pets.size());
-        
-        
-    }
-    
-    public static void searchPetByAge() {
-        int age;
-        boolean found;
-        
-        Scanner scan = new Scanner(System.in);
-        
-        System.out.print("Please enter an age to search: ");
-        age = scan.nextInt();
-        found = false;
-        
-        TableHeader();
-        
-        for (int i = 0; i < pets.size(); i++) {
-            if (pets.get(i).getAge() == age) {
-                Table(i, pets.get(i).getName(), pets.get(i).getAge());
-                found = true;
-            }
-        }
-        if (!found) {
-            System.out.println("No pets found with that age.");
-        }
-        
-        TableFooter(pets.size());
-        
-    }
-
-    
     
     //might move to other file later
     public static void ListHeader() {
