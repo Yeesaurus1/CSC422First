@@ -3,9 +3,8 @@ public class Pet {
     private int petAge;
     
     public Pet(String name, int age) {
-        super();
-        name = petName;
-        age = petAge;
+        this.petName = name;
+        this.petAge = age;
     }
     
     public String getName() {
